@@ -1,0 +1,76 @@
+/**
+ * Black theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #111;
+$highlightColor: #e7ad52;
+
+$mainFont: 'Open Sans', sans-serif;
+$linkColor: $highlightColor;
+$linkColorHover: lighten( $linkColor, 20% );
+$headingFont: 'Montserrat', Impact, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: -0.03em;
+$headingTextTransform: none;
+$selectionBackgroundColor: $highlightColor;
+
+.r-warning {
+  display: flex;
+  align-items: center;
+  padding: .5rem 2rem;
+  border: .5rem solid $highlightColor;
+  text-align: left;
+
+  &::before {
+    content: '⚠';
+    color: $highlightColor;
+    display: inline-block;
+    font-size: 4rem;
+    margin-right: 2rem;
+  }
+}
+
+.r-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(6rem/ -2);
+
+  & > * {
+    width: calc((100% / 3) - 6rem);
+    margin: calc(6rem / 2);
+  }
+}
+
+.r-grid-2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(2rem/ -2);
+
+  & > * {
+    width: calc(50% - 2rem);
+    margin: calc(2rem / 2);
+  }
+}
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color(#222);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------

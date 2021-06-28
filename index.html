@@ -1,0 +1,895 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/night.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-auto-animate>
+          <h1 class="r-fit-text">LAYOUT PRIMITIVES</h1>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <h2>What are layout primitives?</h2>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <div class="r-stretch" style="display: flex; justify-content: center; align-items: center">
+              <p><strong>Basic and simple</strong> building blocks<br />meant to be used in composition<br />to create bigger layouts</p>
+            </div>
+            <p style="font-size: 0.7em;">Based on <a href="https://every-layout.dev/">Every Layout</a><br />by Heydon Pickering and Andy Bell</p>
+          </section>
+          <section data-auto-animate>
+            <div class="r-grid">
+              <figure  data-id="box1" class="fragment">
+                <img src="assets/icons/padbox.svg" width="100" height="100" />
+                <figcaption>Padbox</figcaption>
+              </figure>
+              <figure  data-id="box2" class="fragment">
+                <img src="assets/icons/stack.svg" width="100" height="100" />
+                <figcaption>Stack</figcaption>
+              </figure>
+              <figure  data-id="box3" class="fragment">
+                <img src="assets/icons/inline.svg" width="100" height="100" />
+                <figcaption>Inline</figcaption>
+              </figure>
+              <figure  data-id="box4" class="fragment">
+                <img src="assets/icons/cluster.svg" width="100" height="100" />
+                <figcaption>Cluster</figcaption>
+              </figure>
+              <figure  data-id="box5" class="fragment">
+                <img src="assets/icons/grid.svg" width="100" height="100" />
+                <figcaption>Grid</figcaption>
+              </figure>
+              <figure  data-id="box6" class="fragment">
+                <img src="assets/icons/center.svg" width="100" height="100" />
+                <figcaption>Center</figcaption>
+              </figure>
+            </div>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3>Basic layout primitives rules</h3>
+            <ol>
+              <li class="fragment">Primitive have <strong>only one</strong> responsibility</li>
+              <li class="fragment"><strong>Composition</strong> creates complex layouts</li>
+              <li class="fragment"><strong>No business logic</strong> in primitives</li>
+              <li class="fragment"><strong>No custom styling</strong> on primitives</li>
+            </ol>
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <h2>Our components</h2>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <img src="assets/icons/padbox.svg" width="200" height="200" />
+            <h3 data-id="padbox-title">Padbox</h3>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="padbox-title">Padbox</h3>
+            <p>Simple box created to maintain consistent padding based on our <a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/theme-space--page#scale">spacing scale</a>.</p>
+            <p><a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/layout-primitives-padbox--playground">Storybook docs</a></p>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="padbox-title">Padbox</h3>
+            <div class="r-warning">
+              <p>Padbox is the <strong>only primitive</strong> we can extend with custom styling.</p>
+            </div>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="padbox-title">Padbox</h3>
+            <pre><code data-trim data-line-numbers>
+              import { Padbox } from '@securityscorecard/design-system';
+
+              &lt;Padbox&gt;
+                &lt;p&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus	pharetra magna lectus, a congue ex blandit vel.
+                  Donec id mi commodo	eros porta tempus. Vivamus et elit.
+                &lt;/p&gt;
+              &lt;/Padbox&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="padbox-title">Padbox</h3>
+            <pre><code data-trim data-line-numbers="4,5">
+              import { Padbox } from '@securityscorecard/design-system';
+
+              &lt;Padbox
+                paddingType="square"
+                paddingSize="lg"
+              &gt;
+                &lt;p&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus	pharetra magna lectus, a congue ex blandit vel.
+                  Donec id mi commodo	eros porta tempus. Vivamus et elit.
+                &lt;/p&gt;
+              &lt;/Padbox&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="padbox-title">Padbox</h3>
+            <pre><code data-trim data-line-numbers="1,3,6,7">
+              import { Padbox, PadboxEnums, SpaceSizes } from '@securityscorecard/design-system';
+
+              const { PaddingTypes } = PadboxEnums;
+
+              &lt;Padbox
+                paddingType={PaddingTypes.square}
+                paddingSize={SpaceSizes.lg}
+              &gt;
+                &lt;p&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus	pharetra magna lectus, a congue ex blandit vel.
+                  Donec id mi commodo	eros porta tempus. Vivamus et elit.
+                &lt;/p&gt;
+              &lt;/Padbox&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="padbox-title">Padbox</h3>
+            <div class="r-hstack">
+              <div>
+                <h4>Square</h4>
+                <img height="130" src="assets/padbox/square.png" />
+              </div>
+              <div>
+                <h4>Squish</h4>
+                <img height="130" src="assets/padbox/squish.png" />
+              </div>
+              <div>
+                <h4>Stretch</h4>
+                <img height="130" src="assets/padbox/stretch.png" />
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <img src="assets/icons/stack.svg" width="200" height="200" />
+            <h3 data-id="stack-title">Stack</h3>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack</h3>
+            <p>Is used for stacking elements on top of each other with a consistent gap between them.</p>
+            <p><a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/layout-primitives-stack--playground">Storybook docs</a></p>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack</h3>
+            <pre><code data-trim data-line-numbers>
+              import { Stack } from '@securityscorecard/design-system';
+
+              &lt;Stack&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Stack&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack</h3>
+            <pre><code data-trim data-line-numbers="4">
+              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Stack
+                gap={SpaceSizes.lg}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Stack&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack</h3>
+            <img width="500" src="assets/stack/gap.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Alignment</h3>
+            <pre><code data-trim data-line-numbers="4">
+              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Stack gap={SpaceSizes.lg}
+                justify={stretch}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Stack&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Alignment</h3>
+            <img width="500" src="assets/stack/alignment.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Nesting</h3>
+            <pre><code data-trim data-line-numbers="3,5">
+              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Stack gap={SpaceSizes.lg}&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;Stack gap={SpaceSizes.sm}&gt;
+                  &lt;div&gt;...&lt;/div&gt;
+                  &lt;div&gt;...&lt;/div&gt;
+                &lt;/Stack&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Stack&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Nesting</h3>
+            <pre><code data-trim data-line-numbers="4">
+              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Stack gap={SpaceSizes.lg}
+                isRecursive
+              &gt;
+                &lt;div&gt;
+                  &lt;div&gt;...&lt;/div&gt;
+                  &lt;div&gt;...&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;Stack&gt;
+                  &lt;div&gt;...&lt;/div&gt;
+                  &lt;div&gt;...&lt;/div&gt;
+                &lt;/Stack&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Stack&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Nesting</h3>
+            <img width="400" src="assets/stack/recursive.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Splitting</h3>
+            <pre><code data-trim data-line-numbers="4">
+              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Stack gap={SpaceSizes.lg}
+                splitAt={3}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Stack&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="stack-title">Stack - Splitting</h3>
+            <img width="400" src="assets/stack/splitting.png" />
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <img src="assets/icons/inline.svg" width="200" height="200" />
+            <h3 data-id="inline-title">Inline</h3>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline</h3>
+            <p>Is used for placing elements next to each other with a consistent gap between them.</p>
+            <p><a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/layout-primitives-inline--playground">Storybook docs</a></p>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline</h3>
+            <pre><code data-trim data-line-numbers>
+              import { Inline } from '@securityscorecard/design-system';
+
+              &lt;Inline&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Inline&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline</h3>
+            <pre><code data-trim data-line-numbers="4">
+              import { Inline, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Inline
+                gap={SpaceSizes.lg}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Inline&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline</h3>
+            <img width="720" src="assets/inline/gap.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline - Alignment</h3>
+            <pre><code data-trim data-line-numbers="4,5">
+              import { Inline, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Inline gap={SpaceSizes.lg}
+                align="center"
+                justify="center"
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Inline&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline - Alignment</h3>
+            <img width="720" src="assets/inline/alignment.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline - Stretching</h3>
+            <pre><code data-trim data-line-numbers="4,5">
+              import { Inline, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Inline gap={SpaceSizes.lg}
+                stretchAt="all"
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Inline&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="inline-title">Inline - Stretching</h3>
+            <div class="r-grid-2">
+              <div>
+                <h4>"all"</h4>
+                <img src="assets/inline/stretchAll.png" />
+              </div>
+              <div>
+                <h4>"start"</h4>
+                <img src="assets/inline/stretchStart.png" />
+              </div>
+              <div>
+                <h4>"end"</h4>
+                <img src="assets/inline/stretchEnd.png" />
+              </div>
+              <div>
+                <h4>index</h4>
+                <img src="assets/inline/stretchIndex.png" />
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <img src="assets/icons/cluster.svg" width="200" height="200" />
+            <h3 data-id="cluster-title">Cluster</h3>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="cluster-title">Cluster</h3>
+            <p>Is used for grouping elements together with a consistent gap in both axis.</p>
+            <p><a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/layout-primitives-cluster--playground">Storybook docs</a></p>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="cluster-title">Cluster</h3>
+            <pre><code data-trim data-line-numbers>
+              import { Cluster } from '@securityscorecard/design-system';
+
+              &lt;Cluster&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Cluster&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="cluster-title">Cluster</h3>
+            <pre><code data-trim data-line-numbers="4">
+              import { Cluster, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Cluster
+                gap={SpaceSizes.lg}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Cluster&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="cluster-title">Cluster</h3>
+            <img width="720" src="assets/cluster/gap.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="cluster-title">Cluster - Alignment</h3>
+            <pre><code data-trim data-line-numbers="4,5">
+              import { Cluster, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Cluster gap={SpaceSizes.lg}
+                align="center"
+                justify="center"
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Cluster&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="cluster-title">Cluster - Alignment</h3>
+            <img width="720" src="assets/cluster/alignment.png" />
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <img src="assets/icons/grid.svg" width="200" height="200" />
+            <h3 data-id="grid-title">Grid</h3>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid</h3>
+            <p>Is used for aligning elements in the grid with specified number of columns.</p>
+            <p><a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/layout-primitives-grid--playground">Storybook docs</a></p>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid</h3>
+            <pre data-id="code"><code data-trim data-line-numbers>
+              import { Grid } from '@securityscorecard/design-system';
+
+              &lt;Grid&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Grid&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Grid, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Grid
+                gap={SpaceSizes.lg}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Grid&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid</h3>
+            <img width="720" src="assets/grid/gap.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid - Alignment</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Grid, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Grid gap={SpaceSizes.lg}
+                align="center"
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Grid&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid - Alignment</h3>
+            <img width="720" src="assets/grid/alignment.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid - Columns</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Grid, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Grid gap={SpaceSizes.lg}
+                cols={3}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                ...
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Grid&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="grid-title">Grid - Columns</h3>
+            <img width="720" src="assets/grid/customCols.png" />
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <img src="assets/icons/center.svg" width="200" height="200" />
+            <h3 data-id="center-title">Center</h3>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center</h3>
+            <p>Is used for horizontal centering of elements.</p>
+            <p><a href="https://securityscorecard.github.io/design-system/alpha/?path=/docs/layout-primitives-center--playground">Storybook docs</a></p>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center</h3>
+            <pre data-id="code"><code data-trim data-line-numbers>
+              import { Center } from '@securityscorecard/design-system';
+
+              &lt;Center&gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Center&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Width</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Center } from '@securityscorecard/design-system';
+
+              &lt;Center
+                maxWidth={500}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Center&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Width</h3>
+            <img width="720" src="assets/center/default.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Gutters</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Center, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Center
+                gutters={SpaceSizes.lg}
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Center&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Gutters</h3>
+            <img width="720" src="assets/center/gutters.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Alignment</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Center, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Center
+                areChildrenCentered
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Center&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Alignment</h3>
+            <img width="720" src="assets/center/centeredChildren.png" />
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Alignment</h3>
+            <pre data-id="code"><code data-trim data-line-numbers="4">
+              import { Center, SpaceSizes } from '@securityscorecard/design-system';
+
+              &lt;Center
+                isTextCentered
+              &gt;
+                &lt;div&gt;...&lt;/div&gt;
+                &lt;button&gt;...&lt;/button&gt;
+                &lt;div&gt;...&lt;/div&gt;
+              &lt;/Center&gt;
+            </code></pre>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h3 data-id="center-title">Center - Alignment</h3>
+            <img width="720" src="assets/center/centeredText.png" />
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <h2>Real life</h2>
+          </section>
+          <section>
+            <h4>Color coding</h4>
+            <div class="r-grid">
+              <div >
+                <h5>Padbox</h5>
+                <div style="margin: 0 auto; width:100px; height:100px; background-color: rgba(0,255,255)"></div>
+              </div>
+              <div>
+                <h5>Stack</h5>
+                <div style="margin: 0 auto; width:100px; height:100px; background-color: rgba(255,0,0)"></div>
+              </div>
+              <div>
+                <h5>Inline</h5>
+                <div style="margin: 0 auto; width:100px; height:100px; background-color: rgba(0,255,0)"></div>
+              </div>
+              <div>
+                <h5>Cluster</h5>
+                <div style="margin: 0 auto; width:100px; height:100px; background-color: rgba(255,0,255)"></div>
+              </div>
+              <div>
+                <h5>Grid</h5>
+                <div style="margin: 0 auto; width:100px; height:100px; background-color: rgba(0,0,255)"></div>
+              </div>
+              <div>
+                <h5>Center</h5>
+                <div style="margin: 0 auto; width:100px; height:100px; background-color: rgba(255,255,0)"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section>
+            <h3>Marketplace</h3>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace" style="position: relative; height:50vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="page" style="position: absolute; background-color: rgba(255,0,0,0); top: 0; left: 0;width: 100%;height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace" style="position: relative; height:50vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="page" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 0; left: 0;width: 100%;height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace" style="position: relative; height:50vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="page" style="position: absolute; background-color: rgba(255,0,0,0.2); top: 0; left: 0;width: 100%;height: 130px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace" style="position: relative; height:50vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="page" style="position: absolute; background-color: rgba(255,0,0,0.2); top: 130px; left: 0;width: 100%;height: calc(100% - 130px);"></div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(255,0,0,0); top: 0; left: 0;width: 100%;height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 0; left: 0;width: 100%;height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(255,255,0,0.3); top: 0; left: 130px;width: calc(100% - 260px);height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 0; left: 130px;width: calc(100% - 260px);height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 15px; left: 140px;width: calc(100% - 280px);height: calc(100% - 30px);"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,0,0.3); top: 15px; left: 140px;width: calc(100% - 280px);height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 15px; left: 140px;width: calc(100% - 430px);height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,0,0.3); top: 15px; left: 680px;width: 135px;height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 15px; left: 680px;width: 45px;height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 15px; left: 725px;width: 45px;height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 15px; left: 770px;width: 45px;height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,0,0.3); top: 15px; left: 140px;width: calc(100% - 280px);height: 22px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 65px; left: 140px;width: calc(100% - 280px);height: 40px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.2); top: 65px; left: 140px;width: calc(100% - 280px);height: 20px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-header" style="position: relative; height:9.8vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat;">
+              <div data-id="header" style="position: absolute; background-color: rgba(0,255,255,0.2); top: 89px; left: 140px;width: calc(100% - 280px);height: 15px;"></div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,255,0,0); top: 0; left: 130px;width: calc(100% - 260px);height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,255,0,0.3); top: 0; left: 130px;width: calc(100% - 260px);height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 0; left: 130px;width: calc(100% - 260px);height: 100%;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,0,0.3); top: 18px; left: 140px;width: calc(100% - 280px);height: calc(100% - 18px);"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 18px; left: 140px;width: 150px;height: calc(100% - 18px);"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 18px; left: 140px;width: 150px;height: 350px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 18px; left: 140px;width: 150px;height: 10px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 45px; left: 140px;width: 150px;height: 325px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 45px; left: 140px;width: 150px;height: 15px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 68px; left: 140px;width: 150px;height: 15px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 420px; left: 140px;width: 150px;height: 60px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 420px; left: 140px;width: 150px;height: 10px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 445px; left: 140px;width: 150px;height: 33px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 445px; left: 140px;width: 150px;height: 16px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 461px; left: 140px;width: 150px;height: 16px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 18px; left: 305px;width: 510px;height: calc(100% - 18px);"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(255,0,0,0.3); top: 18px; left: 305px;width: 510px;height: 160px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 18px; left: 305px;width: 510px;height: 20px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,0,255,0.3); top: 43px; left: 305px;width: 510px;height: 135px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 43px; left: 305px;width: 165px;height: 135px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 43px; left: 478px;width: 165px;height: 135px;"></div>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div data-id="marketplace-content" style="position: relative; height:43vh; background-image: url('assets/examples/marketplace.png'); background-size: cover; background-repeat: no-repeat; background-position: center -130px;">
+              <div data-id="content" style="position: absolute; background-color: rgba(0,255,255,0.3); top: 43px; left: 651px;width: 165px;height: 135px;"></div>
+            </div>
+          </section>
+        </section>
+
+        <section data-auto-animate>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h2>Let's code</h2>
+          </section>
+          <section data-auto-animate data-auto-animate-unmatched="fade">
+            <h2>Let's code</h2>
+            <div>Codesandbox: <a href="https://bit.ly/3w0PrzG">https://bit.ly/3w0PrzG</a></div>
+            <div>Figma: <a href="https://bit.ly/3jl9mGX">https://bit.ly/3jl9mGX</a></div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+      });
+    </script>
+  </body>
+</html>

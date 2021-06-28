@@ -1,0 +1,5 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px;" width="90" height="480" rx="3" ry="3" y="10" x="10"></rect>
+  <rect style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px;" width="166" height="480" rx="3" ry="3" y="10" x="148"></rect>
+  <rect style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px;" width="128" height="480" rx="3" ry="3" y="10" x="362"></rect>
+</svg>

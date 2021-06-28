@@ -1,0 +1,6 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px; stroke-dasharray: 30px; stroke-dashoffset: -11px;" width="480" height="480" rx="3" ry="3" y="10" x="10"></rect>
+  <rect style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px;" x="186" y="10" width="128" height="480" rx="3" ry="3"></rect>
+  <path d="M 49.626 240 H 106.031 L 106.031 220 L 141.031 250 L 106.031 280 L 106.031 260 H 49.626 V 240 Z" style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px;"></path>
+  <path d="M -450.446 240 H -394.041 L -394.041 220 L -359.041 250 L -394.041 280 L -394.041 260 H -450.446 V 240 Z" style="fill: none; stroke: rgb(231, 173, 82); stroke-width: 6px;" transform="matrix(-1, 0, 0, 1, 0, 0)"></path>
+</svg>
