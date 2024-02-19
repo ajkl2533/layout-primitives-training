@@ -122,25 +122,6 @@
           </section>
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="padbox-title">Padbox</h3>
-            <pre><code data-trim data-line-numbers="1,3,6,7">
-              import { Padbox, PadboxEnums, SpaceSizes } from '@securityscorecard/design-system';
-
-              const { PaddingTypes } = PadboxEnums;
-
-              &lt;Padbox
-                paddingType={PaddingTypes.square}
-                paddingSize={SpaceSizes.lg}
-              &gt;
-                &lt;p&gt;
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus	pharetra magna lectus, a congue ex blandit vel.
-                  Donec id mi commodo	eros porta tempus. Vivamus et elit.
-                &lt;/p&gt;
-              &lt;/Padbox&gt;
-            </code></pre>
-          </section>
-          <section data-auto-animate data-auto-animate-unmatched="fade">
-            <h3 data-id="padbox-title">Padbox</h3>
             <div class="r-hstack">
               <div>
                 <h4>Square</h4>
@@ -183,10 +164,10 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="stack-title">Stack</h3>
             <pre><code data-trim data-line-numbers="4">
-              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+              import { Stack } from '@securityscorecard/design-system';
 
               &lt;Stack
-                gap={SpaceSizes.lg}
+                gap="lg"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
                 &lt;button&gt;...&lt;/button&gt;
@@ -201,9 +182,9 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="stack-title">Stack - Alignment</h3>
             <pre><code data-trim data-line-numbers="4">
-              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+              import { Stack } from '@securityscorecard/design-system';
 
-              &lt;Stack gap={SpaceSizes.lg}
+              &lt;Stack gap="lg"
                 justify="flex-start"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -219,11 +200,11 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="stack-title">Stack - Nesting</h3>
             <pre><code data-trim data-line-numbers="3,5">
-              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+              import { Stack } from '@securityscorecard/design-system';
 
-              &lt;Stack gap={SpaceSizes.lg}&gt;
+              &lt;Stack gap="lg"&gt;
                 &lt;div&gt;...&lt;/div&gt;
-                &lt;Stack gap={SpaceSizes.sm}&gt;
+                &lt;Stack gap="sm"&gt;
                   &lt;div&gt;...&lt;/div&gt;
                   &lt;div&gt;...&lt;/div&gt;
                 &lt;/Stack&gt;
@@ -231,36 +212,13 @@
               &lt;/Stack&gt;
             </code></pre>
           </section>
-          <section data-auto-animate data-auto-animate-unmatched="fade">
-            <h3 data-id="stack-title">Stack - Nesting</h3>
-            <pre><code data-trim data-line-numbers="4">
-              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
 
-              &lt;Stack gap={SpaceSizes.lg}
-                isRecursive
-              &gt;
-                &lt;div&gt;
-                  &lt;div&gt;...&lt;/div&gt;
-                  &lt;div&gt;...&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;Stack&gt;
-                  &lt;div&gt;...&lt;/div&gt;
-                  &lt;div&gt;...&lt;/div&gt;
-                &lt;/Stack&gt;
-                &lt;div&gt;...&lt;/div&gt;
-              &lt;/Stack&gt;
-            </code></pre>
-          </section>
-          <section data-auto-animate data-auto-animate-unmatched="fade">
-            <h3 data-id="stack-title">Stack - Nesting</h3>
-            <img width="400" src="assets/stack/recursive.png" />
-          </section>
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="stack-title">Stack - Splitting</h3>
             <pre><code data-trim data-line-numbers="4">
-              import { Stack, SpaceSizes } from '@securityscorecard/design-system';
+              import { Stack } from '@securityscorecard/design-system';
 
-              &lt;Stack gap={SpaceSizes.lg}
+              &lt;Stack gap="lg"
                 splitAt={3}
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -301,10 +259,10 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="inline-title">Inline</h3>
             <pre><code data-trim data-line-numbers="4">
-              import { Inline, SpaceSizes } from '@securityscorecard/design-system';
+              import { Inline } from '@securityscorecard/design-system';
 
               &lt;Inline
-                gap={SpaceSizes.lg}
+                gap="lg"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -319,9 +277,9 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="inline-title">Inline - Alignment</h3>
             <pre><code data-trim data-line-numbers="4,5">
-              import { Inline, SpaceSizes } from '@securityscorecard/design-system';
+              import { Inline } from '@securityscorecard/design-system';
 
-              &lt;Inline gap={SpaceSizes.lg}
+              &lt;Inline gap="lg"
                 align="center"
                 justify="center"
               &gt;
@@ -338,9 +296,9 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="inline-title">Inline - Stretching</h3>
             <pre><code data-trim data-line-numbers="4,5">
-              import { Inline, SpaceSizes } from '@securityscorecard/design-system';
+              import { Inline } from '@securityscorecard/design-system';
 
-              &lt;Inline gap={SpaceSizes.lg}
+              &lt;Inline gap="lg"
                 stretchAt="all"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -398,10 +356,10 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="cluster-title">Cluster</h3>
             <pre><code data-trim data-line-numbers="4">
-              import { Cluster, SpaceSizes } from '@securityscorecard/design-system';
+              import { Cluster } from '@securityscorecard/design-system';
 
               &lt;Cluster
-                gap={SpaceSizes.lg}
+                gap="lg"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -417,9 +375,9 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="cluster-title">Cluster - Alignment</h3>
             <pre><code data-trim data-line-numbers="4,5">
-              import { Cluster, SpaceSizes } from '@securityscorecard/design-system';
+              import { Cluster } from '@securityscorecard/design-system';
 
-              &lt;Cluster gap={SpaceSizes.lg}
+              &lt;Cluster gap="lg"
                 align="center"
                 justify="center"
               &gt;
@@ -462,10 +420,10 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="grid-title">Grid</h3>
             <pre data-id="code"><code data-trim data-line-numbers="4">
-              import { Grid, SpaceSizes } from '@securityscorecard/design-system';
+              import { Grid } from '@securityscorecard/design-system';
 
               &lt;Grid
-                gap={SpaceSizes.lg}
+                gap="lg"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -481,9 +439,9 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="grid-title">Grid - Alignment</h3>
             <pre data-id="code"><code data-trim data-line-numbers="4">
-              import { Grid, SpaceSizes } from '@securityscorecard/design-system';
+              import { Grid } from '@securityscorecard/design-system';
 
-              &lt;Grid gap={SpaceSizes.lg}
+              &lt;Grid gap="lg"
                 align="center"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -500,9 +458,9 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="grid-title">Grid - Columns</h3>
             <pre data-id="code"><code data-trim data-line-numbers="4">
-              import { Grid, SpaceSizes } from '@securityscorecard/design-system';
+              import { Grid } from '@securityscorecard/design-system';
 
-              &lt;Grid gap={SpaceSizes.lg}
+              &lt;Grid gap="lg"
                 cols={3}
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
@@ -561,10 +519,10 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="center-title">Center - Gutters</h3>
             <pre data-id="code"><code data-trim data-line-numbers="4">
-              import { Center, SpaceSizes } from '@securityscorecard/design-system';
+              import { Center } from '@securityscorecard/design-system';
 
               &lt;Center
-                gutters={SpaceSizes.lg}
+                gutters="lg"
               &gt;
                 &lt;div&gt;...&lt;/div&gt;
                 &lt;button&gt;...&lt;/button&gt;
@@ -579,7 +537,7 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="center-title">Center - Alignment</h3>
             <pre data-id="code"><code data-trim data-line-numbers="4">
-              import { Center, SpaceSizes } from '@securityscorecard/design-system';
+              import { Center } from '@securityscorecard/design-system';
 
               &lt;Center
                 areChildrenCentered
@@ -597,7 +555,7 @@
           <section data-auto-animate data-auto-animate-unmatched="fade">
             <h3 data-id="center-title">Center - Alignment</h3>
             <pre data-id="code"><code data-trim data-line-numbers="4">
-              import { Center, SpaceSizes } from '@securityscorecard/design-system';
+              import { Center } from '@securityscorecard/design-system';
 
               &lt;Center
                 isTextCentered
